@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { PageNotFoundComponent } from './layout/page-not-found/page-not-found.component';
+import { LocalizadorAgenciaComponent } from './home/components/localizador-agencia/localizador-agencia.component';
 
 
 const routes: Routes = [
