@@ -1,17 +1,19 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { LayoutComponent } from './layout.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { HomeComponent } from './home/home.component';
+import { AppRoutingModule } from '../app-routing.module';
 
 
 
 @NgModule({
   declarations: [
-    LayoutComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    HomeComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    AppRoutingModule
   ]
 })
 export class LayoutModule { }

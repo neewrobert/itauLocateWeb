@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LocalizadorAgenciaComponent } from './localizador-agencia/localizador-agencia.component';
+import { AppRoutingModule } from '../app-routing.module';
 
 
 
@@ -9,7 +10,8 @@ import { LocalizadorAgenciaComponent } from './localizador-agencia/localizador-a
     LocalizadorAgenciaComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    AppRoutingModule
   ]
 })
 export class ComponentsModule { }
