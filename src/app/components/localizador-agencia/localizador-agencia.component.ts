@@ -20,6 +20,8 @@ export class LocalizadorAgenciaComponent implements OnInit {
 
   icon: IconProperties = new IconProperties();
 
+  agenciaSelecionada: AgenciaModel= new AgenciaModel();
+
   constructor(private localizadorAgenciaService: LocalizadorAgenciaService) { }
 
   ngOnInit(): void {
@@ -49,6 +51,23 @@ export class LocalizadorAgenciaComponent implements OnInit {
     this.localizadorAgenciaService.getAgencias(body).subscribe((res: AgenciaModel[]) => {
       this.agencias = res;
     });
+  }
+
+  verificaOperacional(agencias: AgenciaModel[]) {
+    const agenciasOperacionais: AgenciaModel[] = [];
+
+    agencias.forEach((agencia) => {
+      if (agencia.businessStatus === 'OPERATIONAL') {
+        agenciasOperacionais.push(agencia);
+      }
+    });
+
+    return agenciasOperacionais;
+  }
+
+  mostrarAgencia(agencia: AgenciaModel) {
+    this.openAgencyInfo = true;
+    this.agenciaSelecionada = agencia;
   }
 
 }

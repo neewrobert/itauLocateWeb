@@ -14,5 +14,27 @@
     agm-map { 
         width: 100%;
         height: 300px; /* height is required */
-    } 
+    }
+
+    .title-agency {
+        font-weight: bold;
+        padding-left: 20px;
+        margin-top: 20px;
+    }
+
+    .endereco {
+        padding-left: 20px;
+    }
+
+    .status {
+        padding-left: 20px;
+    }
+
+    .agency-closed {
+        color: red;
+    }
+
+    .agency-opened {
+        color: blue;
+    }
 }

@@ -15,12 +15,25 @@
                     [latitude]="agencia.geometry.location.lat" 
                     [longitude]="agencia.geometry.location.lng" 
                     [iconUrl]="icon" 
-                    [label]="agencia.name">
+                    [label]="agencia.name"
+                    (markerClick)="mostrarAgencia(agencia)">
                 </agm-marker>
             </agm-map>
         </div>
         <div *ngIf="openAgencyInfo" class="col-sm-12 col-md-12 col-lg-12">
-
+            <h4 class="title-agency" id="title-agency">
+                {{agenciaSelecionada.name}}
+            </h4>
+            <p class="endereco" id="endereco">
+                {{agenciaSelecionada.formattedAddress}}
+            </p>
+            <p class="status" id="status" 
+                [ngClass]="{
+                    'agency-closed':agenciaSelecionada.openingHours.openNow === false,
+                    'agency-opened':agenciaSelecionada.openingHours.openNow === true
+                }">
+                {{agenciaSelecionada.openingHours.openNow ? 'ABERTO' : 'FECHADO'}}
+            </p>
         </div>
     </div>
 </div>
