@@ -1,1 +1,26 @@
-<p>localizador-agencia works!</p>
+<div class="card-map" id="card-map">
+    <div class="row">
+        <div class="col-sm-12 col-md-12 col-lg-12">
+            <h3 id="title-map" class="title-map">Localizador de Agências</h3>
+        </div>
+        <div class="col-sm-12 col-md-12 col-lg-12">
+            <agm-map
+                [zoom]="16" 
+                [latitude]="latitude" 
+                [longitude]="longitude">
+
+                <agm-marker [latitude]="latitude" [longitude]="longitude"></agm-marker>
+
+                <agm-marker *ngFor="let agencia of agencias;"
+                    [latitude]="agencia.geometry.location.lat" 
+                    [longitude]="agencia.geometry.location.lng" 
+                    [iconUrl]="icon" 
+                    [label]="agencia.name">
+                </agm-marker>
+            </agm-map>
+        </div>
+        <div *ngIf="openAgencyInfo" class="col-sm-12 col-md-12 col-lg-12">
+
+        </div>
+    </div>
+</div>
