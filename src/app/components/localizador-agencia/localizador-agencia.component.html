@@ -1,7 +1,18 @@
+<header class="header" id="header">
+    <img src="/assets/itau_logo.png" alt="Logo do Itau" class="logo" id="logo">
+    <h3 id="title-map" class="title-map">Localizador de Agências: </h3>
+</header>
 <div class="card-map" id="card-map">
     <div class="row">
         <div class="col-sm-12 col-md-12 col-lg-12">
-            <h3 id="title-map" class="title-map">Localizador de Agências</h3>
+            <form class="form-cep">
+                <label for="incep">Buscar por Cep:</label><br>
+                <input class="input-cep" [(ngModel)]="cep" type="text" placeholder="01234-123" id="incep" name="incep">
+                <button type="button" (click)="buscaPorCep()"> OK </button>
+            </form>
+        </div>
+        <div *ngIf="isCepInvalido" class="cep-invalido" id="cepInvalido">
+            <span class="invalido" id="invalido">CEP INVALIDO!</span>
         </div>
         <div class="col-sm-12 col-md-12 col-lg-12">
             <agm-map
@@ -15,7 +26,6 @@
                     [latitude]="agencia.geometry.location.lat" 
                     [longitude]="agencia.geometry.location.lng" 
                     [iconUrl]="icon" 
-                    [label]="agencia.name"
                     (markerClick)="mostrarAgencia(agencia)">
                 </agm-marker>
             </agm-map>
@@ -33,6 +43,9 @@
                     'agency-opened':agenciaSelecionada.openingHours.openNow === true
                 }">
                 {{agenciaSelecionada.openingHours.openNow ? 'ABERTO' : 'FECHADO'}}
+            </p>
+            <p class="rating" id="rating" >
+                Nota: {{agenciaSelecionada.rating}}
             </p>
         </div>
     </div>

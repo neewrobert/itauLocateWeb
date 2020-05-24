@@ -5,10 +5,14 @@
     margin: 60px auto;
     border-radius: 15px;
 
-    .title-map {
+    .form-cep {
         font-family: 'Nunito', sans-serif;
         padding-top: 20px;
         padding-left: 40px;
+        padding-bottom: 20px;
+    }
+    .input-cep {
+        padding-right: 10px;
     }
 
     agm-map { 
@@ -30,11 +34,51 @@
         padding-left: 20px;
     }
 
+    .rating {
+        padding-left: 20px;
+    }
+
     .agency-closed {
         color: red;
     }
 
     .agency-opened {
         color: blue;
+    }
+    .cep-invalido {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        padding-left: 50px;
+        
+        .invalido {
+            color: red;
+            animation: opacityLight 1s infinite;
+        }
+    }
+   
+}
+
+.header {
+    background-color: #e2761e;
+    width: 100%;
+    height: 70px;
+
+    .logo {
+        width: 60px;
+        height: 80%;
+        margin-top: 5px;
+        margin-left: 5px; 
+        float: left;   
+    }
+
+    .title-map {
+        font-weight: bold;
+        font-family: 'Myriad Set Pro', sans-serif;
+        font-size: 16px;
+        float: left;
+        color: white;
+        margin-top: 20px;
+        margin-left: 5px;
     }
 }

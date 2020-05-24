@@ -15,7 +15,13 @@ export class LocalizadorAgenciaService {
   getAgencias(body: LatLngModel) {  
     return this.http
           .post(`${environment.host}/addressInfo/buscaagencias`, body);
-  } 
+  }
+  
+  getLocalizacaoPorCep(cep){
+
+    return this.http.get(`${environment.host}/addressInfo/buscaporcep/?address=` + cep);
+
+  }
 
  
 }

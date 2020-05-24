@@ -10,7 +10,7 @@ import { ComponentsModule } from './components/components.module';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
@@ -18,7 +18,7 @@ import { ComponentsModule } from './components/components.module';
     NgbModule,
     BrowserAnimationsModule,
     LayoutModule,
-    ComponentsModule
+    ComponentsModule,
   ],
   exports: [ LayoutModule, AppRoutingModule],
   providers: [],

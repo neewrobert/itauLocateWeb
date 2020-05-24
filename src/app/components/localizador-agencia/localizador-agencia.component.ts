@@ -13,6 +13,9 @@ export class LocalizadorAgenciaComponent implements OnInit {
 
   latitude: number;
   longitude: number;
+  
+  cep: string = "";
+  isCepInvalido = false;
 
   agencias: AgenciaModel[] = [];
 
@@ -53,6 +56,21 @@ export class LocalizadorAgenciaComponent implements OnInit {
     });
   }
 
+  buscaPorCep(){
+
+    if(this.validaCep(this.cep)){
+      this.localizadorAgenciaService.getLocalizacaoPorCep(this.cep).subscribe((res: LatLngModel) =>{
+        this.latitude = res.lat;
+        this.longitude = res.lng;
+      });
+      this.isCepInvalido = false;
+      this.getAgencias();
+    } else{
+      this.isCepInvalido = true;
+    }
+      
+  }
+
   verificaOperacional(agencias: AgenciaModel[]) {
     const agenciasOperacionais: AgenciaModel[] = [];
 
@@ -69,5 +87,15 @@ export class LocalizadorAgenciaComponent implements OnInit {
     this.openAgencyInfo = true;
     this.agenciaSelecionada = agencia;
   }
+
+  validaCep(cep){
+    var exp = /^[0-9]{5}-[0-9]{3}$/;
+    if(exp.test(cep)){
+      return true;
+    } else{
+      return false;
+    }
+                        
+}
 
 }
