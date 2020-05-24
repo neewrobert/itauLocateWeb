@@ -19,6 +19,8 @@ export class LocalizadorAgenciaComponent implements OnInit {
   isCepInvalido = false;
   inProgress: boolean = true;
 
+  isAgenciasEncontradas: boolean = true;
+
   agencias: AgenciaModel[] = [];
 
   openAgencyInfo = false;
@@ -57,9 +59,11 @@ export class LocalizadorAgenciaComponent implements OnInit {
     this.localizadorAgenciaService.getAgencias(body).subscribe((res: AgenciaModel[]) => {
       this.agencias = res;
     });
-
-
+   
+    console.log(this.agencias);
   }
+
+
 
    buscarAreaSelecionada($event){
     this.inProgress = true;
@@ -70,12 +74,12 @@ export class LocalizadorAgenciaComponent implements OnInit {
     this.getAgencias();
 
     this.inProgress = false;
+
   }
 
     buscaPorCep(){
     this.inProgress = true;
-    console.log(this.inProgress)
-    this.inProgress = true;
+  
     if(this.validaCep(this.cep)){
       this.localizadorAgenciaService.getLocalizacaoPorCep(this.cep).subscribe((res: LatLngModel) =>{
         this.latitude = res.lat;

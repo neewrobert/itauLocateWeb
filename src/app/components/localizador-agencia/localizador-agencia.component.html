@@ -1,7 +1,14 @@
-<header class="header" id="header">
-    <img src="/assets/itau_logo.png" alt="Logo do Itau" class="logo" id="logo">
-    <h3 id="title-map" class="title-map">Localizador de Agências: </h3>
-</header>
+
+<mat-toolbar class="header">
+    <div fxHide.gt-xs>
+            <mat-icon class="logo">
+                <img src="/assets/itau_logo.png" alt="Logo do Itau" class="logo" id="logo">
+            </mat-icon>
+    </div>
+    <div>
+        <h3 id="title-map" class="title-map">Localizador de Agências: </h3>
+    </div>
+</mat-toolbar>
 <div class="card-map" id="card-map">
     <div class="row">
         <div class="col-sm-12 col-md-12 col-lg-12">
@@ -13,6 +20,7 @@
         </div>
         <div *ngIf="isCepInvalido" class="cep-invalido" id="cepInvalido">
             <span class="invalido" id="invalido">CEP INVALIDO!</span>
+            <br>
         </div>
         <div class="col-sm-12 col-md-12 col-lg-12">
             <div *ngIf="inProgress" >
@@ -56,6 +64,3 @@
         </div>
     </div>
 </div>
-<footer class="footer" id="header" >
-
-</footer>
