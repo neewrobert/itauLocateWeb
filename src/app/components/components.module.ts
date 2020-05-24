@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common';
 import { LocalizadorAgenciaComponent } from './localizador-agencia/localizador-agencia.component';
 import { AppRoutingModule } from '../app-routing.module';
 import { AgmCoreModule } from '@agm/core';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
 import { LocalizadorAgenciaService } from './localizador-agencia/localizador-agencia.service';
 
 
@@ -18,6 +19,7 @@ import { LocalizadorAgenciaService } from './localizador-agencia/localizador-age
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    MatProgressBarModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyAJi-DIPj-9REUljHmTsU2_5jp1R1XBH4E'
       /* apiKey is required, unless you are a

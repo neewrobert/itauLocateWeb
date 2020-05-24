@@ -15,12 +15,16 @@
             <span class="invalido" id="invalido">CEP INVALIDO!</span>
         </div>
         <div class="col-sm-12 col-md-12 col-lg-12">
+            <div *ngIf="inProgress" >
+            <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+            </div>
             <agm-map
                 [zoom]="16" 
                 [latitude]="latitude" 
                 [longitude]="longitude">
 
-                <agm-marker [latitude]="latitude" [longitude]="longitude"></agm-marker>
+                <agm-marker [latitude]="latitude" [longitude]="longitude"
+                [markerDraggable]='true' (dragEnd)="buscarAreaSelecionada($event)"></agm-marker>
 
                 <agm-marker *ngFor="let agencia of agencias;"
                     [latitude]="agencia.geometry.location.lat" 
@@ -28,6 +32,8 @@
                     [iconUrl]="icon" 
                     (markerClick)="mostrarAgencia(agencia)">
                 </agm-marker>
+
+                
             </agm-map>
         </div>
         <div *ngIf="openAgencyInfo" class="col-sm-12 col-md-12 col-lg-12">
@@ -50,3 +56,6 @@
         </div>
     </div>
 </div>
+<footer class="footer" id="header" >
+
+</footer>

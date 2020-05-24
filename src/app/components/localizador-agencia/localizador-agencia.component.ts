@@ -3,6 +3,7 @@ import { LocalizadorAgenciaService } from './localizador-agencia.service';
 import { IconProperties } from './model/icon-properties.model';
 import { AgenciaModel } from './model/agencia-model.model';
 import { LatLngModel } from './model/lat-lng-model.model';
+import { timer } from 'rxjs';
 
 @Component({
   selector: 'app-localizador-agencia',
@@ -16,6 +17,7 @@ export class LocalizadorAgenciaComponent implements OnInit {
   
   cep: string = "";
   isCepInvalido = false;
+  inProgress: boolean = true;
 
   agencias: AgenciaModel[] = [];
 
@@ -31,7 +33,7 @@ export class LocalizadorAgenciaComponent implements OnInit {
     this.getGeoLocation();
   }
 
-  getGeoLocation() {
+   getGeoLocation() {
     window.navigator.geolocation.getCurrentPosition(
       (position) => {
         this.latitude = position['coords']['latitude'];
@@ -45,6 +47,7 @@ export class LocalizadorAgenciaComponent implements OnInit {
         }
       }
     );
+    this.inProgress = false;
   }
 
   getAgencias() {
@@ -54,10 +57,25 @@ export class LocalizadorAgenciaComponent implements OnInit {
     this.localizadorAgenciaService.getAgencias(body).subscribe((res: AgenciaModel[]) => {
       this.agencias = res;
     });
+
+
   }
 
-  buscaPorCep(){
+   buscarAreaSelecionada($event){
+    this.inProgress = true;
+    console.log('clicado');
+    this.latitude = $event.coords.lat;
+    this.longitude = $event.coords.lng;
+    console.log(this.latitude)
+    this.getAgencias();
 
+    this.inProgress = false;
+  }
+
+    buscaPorCep(){
+    this.inProgress = true;
+    console.log(this.inProgress)
+    this.inProgress = true;
     if(this.validaCep(this.cep)){
       this.localizadorAgenciaService.getLocalizacaoPorCep(this.cep).subscribe((res: LatLngModel) =>{
         this.latitude = res.lat;
@@ -68,7 +86,8 @@ export class LocalizadorAgenciaComponent implements OnInit {
     } else{
       this.isCepInvalido = true;
     }
-      
+
+    this.inProgress = false;
   }
 
   verificaOperacional(agencias: AgenciaModel[]) {
@@ -96,6 +115,14 @@ export class LocalizadorAgenciaComponent implements OnInit {
       return false;
     }
                         
+}
+
+controlProgressBar(bool: boolean){
+  this.inProgress = bool;
+}
+
+sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
 }
 
 }
