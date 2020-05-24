@@ -30,7 +30,11 @@
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",
     "zone.js": "~0.10.2",
+    "@angular/compiler-cli": "~9.1.1",
+    "core-js": "^2.5.4",
     "express": "^4.16.4",
+    "path": "^0.12.7",
+    "typescript": "~3.8.3"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.901.1",
@@ -51,8 +55,10 @@
     "protractor": "~5.4.3",
     "ts-node": "~8.3.0",
     "tslint": "~6.1.0",
-    "typescript": "~3.8.3",
-    "express": "^4.16.4"
+    "core-js": "^2.5.4",
+    "express": "^4.16.4",
+    "path": "^0.12.7",
+    "typescript": "~3.8.3"
   },
   "engines": {
     "node": "10.15.2",
